@@ -6,7 +6,6 @@ public class CharacterController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     public DefaultStatsData statsData;
-    public GameObject Health;
 
     private void Awake()
     {

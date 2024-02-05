@@ -7,6 +7,8 @@ using UnityEngine;
 public class DefaultStatsData : ScriptableObject
 {
     [Header("Stats Info")]
+    public int level;
     public float max_health;
+    public int coin;
     public float speed;
 }
