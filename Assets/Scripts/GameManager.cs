@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private CharacterInputController characterInput;
     public int player_health { get; private set; }
-    
+    public int player_level { get; private set; }
+    public int player_coin { get; private set; }
+
     [Header("UI")]
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI nameText;
@@ -21,26 +23,24 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         characterInput = player.GetComponent<CharacterInputController>();
+        player_health = characterInput.statsData.max_health;
+        player_level = characterInput.statsData.level;
+        player_coin = characterInput.statsData.coin;
     }
 
     private void Start()
     {
-        player_health = characterInput.statsData.max_health;
-        LevelText(characterInput.statsData.level);
-        CoinText(characterInput.statsData.coin);
+        
+        LevelText(player_level);
+        CoinText(player_coin);
     }
 
     private void Update()
     {
-        for (int i = 0; i < player_health; i++)
-        {
-            Invoke("LevelUp", 10f);
-        }
     }
 
     private void LevelUp()
     {
-        characterInput.statsData.level++;
     }
 
 

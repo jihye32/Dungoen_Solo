@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class CharacterStatsUI : MonoBehaviour
 {
-    private GameManager gameManager = GameManager.instance;
-
     //체력바 생성 및 수정
     public GameObject characterHealth;
     public GameObject characterHalfHealth;
@@ -23,11 +21,23 @@ public class CharacterStatsUI : MonoBehaviour
     {
         hearts_count = GameManager.instance.player_health;
         Hearts = new GameObject[hearts_count];
+        for (int i = 0; i < Hearts.Length; i++)
+        {
+            float position_y = transform.position.y + 65 * i;
+            GameObject newHeart = MakeCharaterHealth(position_y);
+            Hearts[i] = newHeart;
+        }
     }
 
-    private void MakeCharaterHealth()
+    private void Update()
     {
-        GameObject newHeart = Instantiate(characterHealth);
+        
+    }
+
+    private GameObject MakeCharaterHealth(float position_y)
+    {
+        transform.position = new Vector3(transform.position.x, position_y, 0);
+        return Instantiate(characterHealth,transform.position,Quaternion.identity);
     }
 
 
