@@ -44,11 +44,6 @@ public class CharacterUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void MakeCharaterHealth(int index)
     {
         float position_x = characterHealthParent.transform.position.x + 65 * index;
