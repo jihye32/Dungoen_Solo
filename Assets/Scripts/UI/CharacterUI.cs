@@ -27,7 +27,13 @@ public class CharacterUI : MonoBehaviour
     public GameObject characterInventoryButton;
     public GameObject characterInventorySlot;
     public GameObject characterInventoryParent;
-    private GameObject[,] inventoryItem;
+    public GameObject[,] inventoryItem;
+    private CharacterInventory inventory;
+
+    private void Awake()
+    {
+        inventory = GameManager.instance.player.GetComponent<CharacterInventory>();
+    }
 
     private void Start()
     {
@@ -45,6 +51,7 @@ public class CharacterUI : MonoBehaviour
                 MakeInventorySllot(j, i);
             }
         }
+        inventory.InInventoryItem();
     }
 
     private void Update()

@@ -11,13 +11,14 @@ public class GameManager : MonoBehaviour
     public int player_health { get; private set; }
     public int player_level { get; private set; }
     public int player_coin { get; private set; }
-    public float player_attack { get; private set; }
-    public float player_defense { get; private set; }
-    public float player_critical { get; private set; }
+    public float player_attack { get; set; }
+    public float player_defense { get; set; }
+    public float player_critical { get; set; }
     public bool player_interaction;
 
 
     [Header("UI")]
+    public GameObject UI;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI coinText;
