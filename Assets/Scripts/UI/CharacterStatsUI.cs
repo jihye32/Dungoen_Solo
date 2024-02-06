@@ -24,11 +24,7 @@ public class CharacterStatsUI : MonoBehaviour
         Hearts = new GameObject[hearts_count];
         for (int i = 0; i < Hearts.Length; i++)
         {
-            float position_x = characterHealthParent.transform.position.x + 65 * i;
-            float position_y = characterHealthParent.transform.position.y;
-            GameObject newHeart = MakeCharaterHealth(position_x, position_y);
-            newHeart.transform.parent = characterHealthParent.transform;
-            Hearts[i] = newHeart;
+            MakeCharaterHealth(i);
         }
     }
 
@@ -37,10 +33,14 @@ public class CharacterStatsUI : MonoBehaviour
         
     }
 
-    private GameObject MakeCharaterHealth(float x, float y)
+    private void MakeCharaterHealth(int index)
     {
-        transform.position = new Vector3(x, y, 0);
-        return Instantiate(characterHealth,transform.position,Quaternion.identity);
+        float position_x = characterHealthParent.transform.position.x + 65 * index;
+        float position_y = characterHealthParent.transform.position.y;
+        Vector3 position = new Vector3(position_x, position_y, 0);
+        GameObject newHeart = Instantiate(characterHealth, position, Quaternion.identity);
+        newHeart.transform.parent = characterHealthParent.transform;
+        Hearts[index] = newHeart;
     }
 
 
