@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    public DefaultStatsData statsData;
+    public AttackStatsData statsData;
 
     private void Awake()
     {
@@ -19,8 +19,8 @@ public class CharacterController : MonoBehaviour
         rigidBody.velocity = direction;
     }
 
-    protected void interAction()
+    protected bool interAction()
     {
-        //W을 누르면 NPC랑 대화
+        return true;
     }
 }

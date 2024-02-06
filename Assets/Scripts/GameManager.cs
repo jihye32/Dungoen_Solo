@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     public int player_health { get; private set; }
     public int player_level { get; private set; }
     public int player_coin { get; private set; }
+    public float player_attack { get; private set; }
+    public float player_defense { get; private set; }
+    public float player_critical { get; private set; }
+    public bool player_interaction;
+
 
     [Header("UI")]
     public TextMeshProUGUI levelText;
@@ -26,17 +31,20 @@ public class GameManager : MonoBehaviour
         player_health = characterInput.statsData.max_health;
         player_level = characterInput.statsData.level;
         player_coin = characterInput.statsData.coin;
+        player_attack = characterInput.statsData.attack;
+        player_defense = characterInput.statsData.defense;
+        player_critical = characterInput.statsData.critical;
     }
 
     private void Start()
     {
-        
         LevelText(player_level);
         CoinText(player_coin);
     }
 
     private void Update()
     {
+        player_interaction = characterInput.inter_action;
     }
 
     private void LevelUp()

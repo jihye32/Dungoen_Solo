@@ -18,7 +18,10 @@ public class CharacterUI : MonoBehaviour
     //캐릭터 버튼 UI
     public GameObject characterStatsUI;
     public GameObject characterStatsButton;
-
+    public TextMeshProUGUI characterAttackText;
+    public TextMeshProUGUI characterDefenseText;
+    public TextMeshProUGUI characterCriticalText;
+    public TextMeshProUGUI characterHealthText;
 
     public GameObject characterInventoryUI;
     public GameObject characterInventoryButton;
@@ -42,6 +45,14 @@ public class CharacterUI : MonoBehaviour
                 MakeInventorySllot(j, i);
             }
         }
+    }
+
+    private void Update()
+    {
+        characterAttackText.text = GameManager.instance.player_attack.ToString();
+        characterDefenseText.text = GameManager.instance.player_defense.ToString();
+        characterHealthText.text = GameManager.instance.player_health.ToString();
+        characterCriticalText.text = GameManager.instance.player_critical.ToString();
     }
 
     private void MakeCharaterHealth(int index)
