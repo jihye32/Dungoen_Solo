@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float player_attack { get; set; }
     public float player_defense { get; set; }
     public float player_critical { get; set; }
-    public bool player_interaction;
+    [HideInInspector]public bool player_interaction;
 
 
     [Header("UI")]
@@ -29,12 +29,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         characterInput = player.GetComponent<CharacterInputController>();
-        player_health = characterInput.statsData.max_health;
-        player_level = characterInput.statsData.level;
-        player_coin = characterInput.statsData.coin;
-        player_attack = characterInput.statsData.attack;
-        player_defense = characterInput.statsData.defense;
-        player_critical = characterInput.statsData.critical;
+        StartSetting();
     }
 
     private void Start()
@@ -48,8 +43,14 @@ public class GameManager : MonoBehaviour
         player_interaction = characterInput.inter_action;
     }
 
-    private void LevelUp()
+    private void StartSetting()
     {
+        player_health = characterInput.statsData.max_health;
+        player_level = characterInput.statsData.level;
+        player_coin = characterInput.statsData.coin;
+        player_attack = characterInput.statsData.attack;
+        player_defense = characterInput.statsData.defense;
+        player_critical = characterInput.statsData.critical;
     }
 
 

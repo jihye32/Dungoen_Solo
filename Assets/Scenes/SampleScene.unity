@@ -1044,7 +1044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 480, y: -130}
+  m_AnchoredPosition: {x: 480, y: 232}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &293490030
@@ -7905,7 +7905,6 @@ GameObject:
   - component: {fileID: 2120548426}
   - component: {fileID: 2120548428}
   - component: {fileID: 2120548427}
-  - component: {fileID: 2120548430}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -8035,18 +8034,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03, y: 0.22}
   m_Size: {x: 0.87, y: 1.3}
   m_Direction: 0
---- !u!114 &2120548430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120548423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ddef7afde3fa7b4ca512b0b14184f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &997647155860250715
 RectTransform:
   m_ObjectHideFlags: 0

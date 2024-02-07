@@ -2,12 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum NPCtype
-{
-    Store
-}
-
-public class NPCmanager : MonoBehaviour
+public class ItemData : ScriptableObject
 {
     // Start is called before the first frame update
     void Start()

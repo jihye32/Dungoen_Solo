@@ -48,7 +48,7 @@ public class CharacterUI : MonoBehaviour
         {
             for(int j = 0; j < inventoryItem.GetLength(1); j++)
             {
-                MakeInventorySllot(j, i);
+                MakeInventorySlot(j, i);
             }
         }
         inventory.InInventoryItem();
@@ -72,10 +72,10 @@ public class CharacterUI : MonoBehaviour
         Hearts[index] = newHeart;
     }
 
-    private void MakeInventorySllot(int index1, int index2)
+    private void MakeInventorySlot(int index1, int index2)
     {
         float position_x = characterInventoryParent.transform.position.x + 120 * index1;
-        float position_y = characterInventoryParent.transform.position.y + 120 * index2;
+        float position_y = characterInventoryParent.transform.position.y - 120 * index2;
         Vector3 position = new Vector3(position_x, position_y, 0);
         GameObject newSlot = Instantiate(characterInventorySlot, position, Quaternion.identity);
         newSlot.transform.parent = characterInventoryParent.transform;
