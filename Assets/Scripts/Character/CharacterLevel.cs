@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterLevel : MonoBehaviour
 {
-    public float[] levelUpExp = new float[2];
-    public float levelup_plusExp;
+    [HideInInspector] public float[] levelUpExp = new float[2];
+    [HideInInspector] public float levelup_plusExp;
 
     private void Start()
     {

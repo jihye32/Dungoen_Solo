@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float critical;
     [HideInInspector] public int coin;
     private CharacterInputController characterInputController;
+    private CharacterLevel characterLevel;
+    private CharacterHealth characterHealth;
 
     [Header("UI")]
     public GameObject statusButton;
@@ -53,11 +55,16 @@ public class GameManager : MonoBehaviour
         instance = this;
         inventory = GetComponent<Inventory>();
         characterInputController = character.GetComponent<CharacterInputController>();
+        characterLevel = character.GetComponent<CharacterLevel>();
+        characterHealth = character.GetComponent<CharacterHealth>();
     }
 
     private void Start()
     {
         StartCharacterSetting();
+
+        characterHealth.MakecharacterHealth(health);
+
         inventorySlots = new GameObject[inventorySlotCount];
         inventory.MakeInventorySlot(inventorySlotCount);
         inventory.ItemInInventory(testItem);
@@ -89,9 +96,9 @@ public class GameManager : MonoBehaviour
         criticalText.text = critical.ToString();
 
         levelExp = 9;
-        levelBar.fillAmount = levelExp / characterInputController.levelUpExp[0];
+        levelBar.fillAmount = levelExp / characterLevel.levelUpExp[0];
         levelExpText.text = levelExp.ToString();
-        levelUpExpText.text = characterInputController.levelUpExp[0].ToString();
+        levelUpExpText.text = characterLevel.levelUpExp[0].ToString();
 
         change_status = false;
     }

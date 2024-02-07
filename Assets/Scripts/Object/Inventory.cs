@@ -9,11 +9,10 @@ public class Inventory : MonoBehaviour
 {
     public GameObject slotsParent;
     private GameObject slot;
-    private bool[] check_item; //필요 없으면 삭제 
     private Item[] inventoryItem;
     private int select_slot;
 
-    private void Start()
+    private void Awake()
     {
         select_slot = -1;
         slot = Resources.Load<GameObject>("Prefabs/slot");
@@ -30,14 +29,12 @@ public class Inventory : MonoBehaviour
 
     public void MakeInventorySlot(int index)
     {
-        check_item = new bool[index];
         inventoryItem = new Item[index];
         for (int i = 0; i < index; i++)
         {
             GameObject newSlot = Instantiate(slot);
             newSlot.transform.parent = slotsParent.transform;
             GameManager.instance.inventorySlots[i] = newSlot;
-            check_item[i] = false;
             inventoryItem[i] = null;
         }
         ChangeParameter();
@@ -50,7 +47,6 @@ public class Inventory : MonoBehaviour
             if (inventoryItem[i] == null)
             {
                 inventoryItem[i] = item;
-                check_item[i] = true;
                 GameManager.instance.inventorySlots[i].transform.Find("UnEquip/item").GetComponent<Image>().sprite = inventoryItem[i].itemData.itemImage;
                 GameManager.instance.inventorySlots[i].transform.Find("Equip/item").GetComponent<Image>().sprite = inventoryItem[i].itemData.itemImage;
                 GameManager.instance.inventorySlots[i].transform.Find("UnEquip/item").gameObject.SetActive(true);
