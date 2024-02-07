@@ -4001,7 +4001,7 @@ GameObject:
   - component: {fileID: 1149219240}
   - component: {fileID: 1149219239}
   m_Layer: 0
-  m_Name: health
+  m_Name: critical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5308,6 +5308,7 @@ GameObject:
   - component: {fileID: 1578952144}
   - component: {fileID: 1578952143}
   - component: {fileID: 1578952142}
+  - component: {fileID: 1578952145}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -5393,6 +5394,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578952145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578952141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b6b75d2f5edc42849350884cc7b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusData: {fileID: 11400000, guid: 937790d4bcc8682429949222794231f1, type: 2}
+  inter_action: 0
 --- !u!1 &1620714808
 GameObject:
   m_ObjectHideFlags: 0
@@ -6255,12 +6270,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd2f90c5de64314fb8d40f4b81e97d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 1578952141}
+  level: 0
+  health: 0
+  attack: 0
+  defense: 0
+  critical: 0
+  coin: 0
   statusButton: {fileID: 1716483118}
   inventoryButton: {fileID: 1701590671}
   statusUI: {fileID: 607666498}
   inventoryUI: {fileID: 1667947182}
-  inventorySlotF: {fileID: 2072447030114540592, guid: f0f4da33de3295a43a0bbdd34a9a17e5, type: 3}
-  inventorySlots: []
+  levelText: {fileID: 734155733}
+  attackText: {fileID: 1749262125}
+  defenseText: {fileID: 432603461}
+  healthText: {fileID: 437962213}
+  criticalText: {fileID: 1149219239}
+  coinText: {fileID: 1248515245}
+  inventorySlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   inventorySlotCount: 16
   testItem: {fileID: 1256599399}
 --- !u!4 &1844887590

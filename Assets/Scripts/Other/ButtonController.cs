@@ -33,9 +33,4 @@ public class ButtonController : MonoBehaviour
         GameManager.instance.statusButton.SetActive(true);
         GameManager.instance.inventoryButton.SetActive(true);
     }
-
-    public void OnSelectSlot(int index)
-    {
-
-    }
 }

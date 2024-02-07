@@ -7,7 +7,7 @@ using UnityEngine;
 public class AttackStatusData : DefaultStatusData
 {
     [Header("Attack Info")]
-    public float attack;
-    public float defense;
+    public int attack;
+    public int defense;
     public float critical;
 }
