@@ -81,4 +81,34 @@ public class CharacterUI : MonoBehaviour
     //    newSlot.transform.parent = characterInventoryParent.transform;
     //    inventoryItem[index1, index2] = newSlot;
     //}
+
+
+    ////Button
+    //public void OnClickCharacterStats()
+    //{
+    //    characterStatsUI.SetActive(true);
+    //    characterStatsButton.SetActive(false);
+    //    characterInventoryButton.SetActive(false);
+    //}
+
+    //public void OffClickCharacterStats()
+    //{
+    //    characterStatsUI.SetActive(false);
+    //    characterStatsButton.SetActive(true);
+    //    characterInventoryButton.SetActive(true);
+    //}
+
+    //public void OnClickCharacterInventory()
+    //{
+    //    characterInventoryUI.SetActive(true);
+    //    characterStatsButton.SetActive(false);
+    //    characterInventoryButton.SetActive(false);
+    //}
+
+    //public void OffClickCharacterInventory()
+    //{
+    //    characterInventoryUI.SetActive(false);
+    //    characterStatsButton.SetActive(true);
+    //    characterInventoryButton.SetActive(true);
+    //}
 }

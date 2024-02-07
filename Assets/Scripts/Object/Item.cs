@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Object itemData;
+    public ItemData itemData;
+    [HideInInspector] public int attack;
+    [HideInInspector] public int defense;
+    [HideInInspector] public float critical;
+    [HideInInspector] public int health;
 
-    private void Start()
+    public Item(ItemData itemData)
     {
-        itemData = Resources.Load("Sword");
+        attack = itemData.attack;
+        defense = itemData.defense;
+        critical = itemData.critical;
+        health = itemData.plus_health;
     }
 }

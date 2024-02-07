@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5461e10887d5149a469cb99b24bb98, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  attack: 0
-  defense: 0
-  critical: 0
+  type: 0
+  itemImage: {fileID: 21300000, guid: 1ff1175d56df9eb4f8cfa0ba429d9254, type: 3}
+  attack: 5
+  defense: 3
+  critical: 1
+  plus_health: 0
