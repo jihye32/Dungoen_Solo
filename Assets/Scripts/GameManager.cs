@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private Inventory inventory;
     public GameObject[] inventorySlots;
     public int inventorySlotCount;
+    public bool change_status;
 
 
     public Item testItem;
@@ -54,6 +55,18 @@ public class GameManager : MonoBehaviour
         inventory.ItemInInventory(testItem);
     }
 
+    private void Update()
+    {
+        if(change_status)
+        {
+            ChageCharacterSetting();
+            change_status = false;
+        }
+    }
+
+
+
+
     private void StartCharacterSetting()
     {
         level = characterInputController.statusData.level;
@@ -69,6 +82,15 @@ public class GameManager : MonoBehaviour
         attackText.text = attack.ToString();
         defenseText.text = defense.ToString();
         criticalText.text = critical.ToString();
+
+        change_status = false;
     }
 
+    private void ChageCharacterSetting()
+    {
+        healthText.text = health.ToString();
+        attackText.text = attack.ToString();
+        defenseText.text = defense.ToString();
+        criticalText.text = critical.ToString();
+    }
 }

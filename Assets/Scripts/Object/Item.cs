@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     [HideInInspector] public int defense;
     [HideInInspector] public float critical;
     [HideInInspector] public int health;
+    [HideInInspector] public bool equip;
 
     public Item(ItemData itemData)
     {
@@ -16,5 +17,6 @@ public class Item : MonoBehaviour
         defense = itemData.defense;
         critical = itemData.critical;
         health = itemData.plus_health;
+        equip = false;
     }
 }

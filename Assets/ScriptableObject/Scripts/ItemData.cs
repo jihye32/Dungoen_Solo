@@ -7,6 +7,11 @@ public enum ItemType
     atk, def
 }
 
+public enum EquipType
+{
+    equip, unequip
+}
+
 [CreateAssetMenu(fileName = "ItemData", menuName = "Data/Item", order = 2)]
 public class ItemData : ScriptableObject
 {
