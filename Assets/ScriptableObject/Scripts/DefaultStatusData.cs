@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "DefaultStatsData", menuName ="StatsData/Default", order = 0)]
-public class DefaultStatsData : ScriptableObject
+[CreateAssetMenu(fileName = "DefaultStatusData", menuName ="Data/StatusDefault", order = 0)]
+public class DefaultStatusData : ScriptableObject
 {
     [Header("Stats Info")]
     public int level;

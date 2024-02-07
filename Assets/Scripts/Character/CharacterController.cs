@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    public AttackStatsData statsData;
+    public AttackStatusData statusData;
 
     private void Awake()
     {
@@ -15,7 +15,7 @@ public class CharacterController : MonoBehaviour
     //InputData
     protected void moveMent(Vector2 direction)
     {
-        direction = direction * statsData.speed;
+        direction = direction * statusData.speed;
         rigidBody.velocity = direction;
     }
 

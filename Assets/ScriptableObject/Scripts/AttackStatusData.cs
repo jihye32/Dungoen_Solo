@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "AttackStatsData", menuName = "StatsData/Attack", order = 1)]
-public class AttackStatsData : DefaultStatsData
+[CreateAssetMenu(fileName = "AttackStatusData", menuName = "Data/StatusAttack", order = 1)]
+public class AttackStatusData : DefaultStatusData
 {
     [Header("Attack Info")]
     public float attack;
