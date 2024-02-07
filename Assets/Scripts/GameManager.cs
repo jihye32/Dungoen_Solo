@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public GameObject statusButton;
     public GameObject inventoryButton;
+    public GameObject statusUI;
 
 
 
