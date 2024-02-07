@@ -3517,11 +3517,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 020000561d04a904f9f4c7175627f6b9, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -4667,6 +4667,7 @@ MonoBehaviour:
   defense: 0
   critical: 0
   health: 0
+  equip: 0
 --- !u!4 &1256599400
 Transform:
   m_ObjectHideFlags: 0
@@ -5407,6 +5408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusData: {fileID: 11400000, guid: 937790d4bcc8682429949222794231f1, type: 2}
+  levelUpExp: 0000000000000000
+  levelup_plusExp: 0
   inter_action: 0
 --- !u!1 &1620714808
 GameObject:
@@ -6272,6 +6275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 1578952141}
   level: 0
+  levelExp: 0
   health: 0
   attack: 0
   defense: 0
@@ -6282,29 +6286,17 @@ MonoBehaviour:
   statusUI: {fileID: 607666498}
   inventoryUI: {fileID: 1667947182}
   levelText: {fileID: 734155733}
+  levelExpText: {fileID: 1499902907}
+  levelUpExpText: {fileID: 1960153448}
+  levelBar: {fileID: 815755651}
   attackText: {fileID: 1749262125}
   defenseText: {fileID: 432603461}
   healthText: {fileID: 437962213}
   criticalText: {fileID: 1149219239}
   coinText: {fileID: 1248515245}
-  inventorySlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  inventorySlots: []
   inventorySlotCount: 16
+  change_status: 0
   testItem: {fileID: 1256599399}
 --- !u!4 &1844887590
 Transform:

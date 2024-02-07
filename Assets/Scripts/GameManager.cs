@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public GameObject character;
     [HideInInspector] public int level;
+    [HideInInspector] public float levelExp;
     [HideInInspector] public int health;
     [HideInInspector] public int attack;
     [HideInInspector] public int defense;
@@ -20,19 +22,25 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryButton;
     public GameObject statusUI;
     public GameObject inventoryUI;
+
     public TMP_Text levelText;
+    public TMP_Text levelExpText;
+    public TMP_Text levelUpExpText;
+    public Image levelBar;
+
     public TMP_Text attackText;
     public TMP_Text defenseText;
     public TMP_Text healthText;
     public TMP_Text criticalText;
     public TMP_Text coinText;
+    
 
 
     [Header("Inventory")]
     private Inventory inventory;
-    public GameObject[] inventorySlots;
+    [HideInInspector] public GameObject[] inventorySlots;
     public int inventorySlotCount;
-    public bool change_status;
+    [HideInInspector] public bool change_status;
 
 
     public Item testItem;
@@ -64,9 +72,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-
     private void StartCharacterSetting()
     {
         level = characterInputController.statusData.level;
@@ -82,6 +87,11 @@ public class GameManager : MonoBehaviour
         attackText.text = attack.ToString();
         defenseText.text = defense.ToString();
         criticalText.text = critical.ToString();
+
+        levelExp = 9;
+        levelBar.fillAmount = levelExp / characterInputController.levelUpExp[0];
+        levelExpText.text = levelExp.ToString();
+        levelUpExpText.text = characterInputController.levelUpExp[0].ToString();
 
         change_status = false;
     }
