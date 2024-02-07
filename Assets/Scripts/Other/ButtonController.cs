@@ -22,13 +22,20 @@ public class ButtonController : MonoBehaviour
     //inventory UI
     public void OnClickCharacterInventory()
     {
+        GameManager.instance.inventoryUI.SetActive(true);
         GameManager.instance.statusButton.SetActive(false);
         GameManager.instance.inventoryButton.SetActive(false);
     }
 
     public void OffClickCharacterInventory()
     {
+        GameManager.instance.inventoryUI.SetActive(false);
         GameManager.instance.statusButton.SetActive(true);
         GameManager.instance.inventoryButton.SetActive(true);
+    }
+
+    public void OnSelectSlot(int index)
+    {
+
     }
 }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject statusButton;
     public GameObject inventoryButton;
     public GameObject statusUI;
+    public GameObject inventoryUI;
 
 
 
