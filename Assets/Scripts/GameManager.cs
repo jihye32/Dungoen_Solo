@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int coin;
     private CharacterInputController characterInputController;
     private CharacterLevel characterLevel;
-    private CharacterHealth characterHealth;
+    public CharacterHealth characterHealth;
 
     [Header("UI")]
     public GameObject statusButton;

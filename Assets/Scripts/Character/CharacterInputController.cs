@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CharacterInputController : CharacterController
 {
-    private Vector3 lookRight = new Vector3(-1, 1, 1);
-    private Vector3 lookLeft = new Vector3(1, 1, 1);
+    private Vector3 lookRight = new Vector3(1, 1, 1);
+    private Vector3 lookLeft = new Vector3(-1, 1, 1);
     [HideInInspector]public bool inter_action = false;
 
     public void OnMove(InputValue moveInput)

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
+    //수정 필요!
     //status UI
     public void OnClickCharacterStatus()
     {
         GameManager.instance.statusUI.SetActive(true);
         GameManager.instance.statusButton.SetActive(false);
         GameManager.instance.inventoryButton.SetActive(false);
+        GameManager.instance.characterHealth.heartParent.SetActive(false);
     }
 
     public void OffClickCharacterStatus()
@@ -17,6 +19,7 @@ public class ButtonController : MonoBehaviour
         GameManager.instance.statusUI.SetActive(false);
         GameManager.instance.statusButton.SetActive(true);
         GameManager.instance.inventoryButton.SetActive(true);
+        GameManager.instance.characterHealth.heartParent.SetActive(true);
     }
 
     //inventory UI
