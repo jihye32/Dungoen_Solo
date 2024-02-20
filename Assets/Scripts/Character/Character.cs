@@ -11,5 +11,9 @@ public class Character : MonoBehaviour
         {
             SceneManager.LoadScene("DungoenEnterScene");
         }
+        else if (collision.gameObject.tag == "GoMain")
+        {
+            SceneManager.LoadScene("MainScene");
+        }
     }
 }
