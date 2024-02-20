@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterInputController : CharacterController
+public class CharacterInputController : CharacterInput
 {
     private Vector3 lookRight = new Vector3(1, 1, 1);
     private Vector3 lookLeft = new Vector3(-1, 1, 1);
