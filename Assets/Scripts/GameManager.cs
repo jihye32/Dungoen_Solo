@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public GameObject[] characterPrefabs;
-    public GameObject[] characterPosition;
+    public GameObject characterPosition;
     [HideInInspector] public GameObject character;
     [HideInInspector] public int level;
     [HideInInspector] public int levelExp;
@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
 
 
     public Item testItem;
-    private UIManager UiManager;
+    public UIManager UiManager;
+    public Camera camera;
+
 
     public static GameManager instance;
 
@@ -41,13 +43,13 @@ public class GameManager : MonoBehaviour
 
         Json.instance.LoadData();
 
+        camera = Camera.main;
         inventory = GetComponent<Inventory>();
+
         character = Instantiate(characterPrefabs[0]);
         characterStats = character.GetComponent<Character>();
         characterLevel = character.GetComponent<CharacterLevel>();
         characterHealth = GetComponent<CharacterHealth>();
-
-        UiManager = GetComponentInChildren<UIManager>();
     }
 
     private void Start()
@@ -74,8 +76,7 @@ public class GameManager : MonoBehaviour
 
     private void StartCharacterSetting()
     {
-        character.transform.parent = characterPosition[0].transform;
-        character.transform.position = characterPosition[0].transform.position;
+        character.transform.position = characterPosition.transform.position;
 
         level = characterStats.statusData.level;
         health = characterStats.statusData.max_health;

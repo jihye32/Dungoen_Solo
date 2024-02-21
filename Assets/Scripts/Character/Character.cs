@@ -11,15 +11,13 @@ public class Character : MonoBehaviour
     {
         if(collision.gameObject.tag == "EnterDungoen")
         {
-            GameManager.instance.SaveCharacterStats();
-            SceneManager.LoadScene("DungoenEnterScene");
+            GameManager.instance.character.transform.position = new Vector3(31.5f, -3.5f, 0);
+            GameManager.instance.camera.transform.position = new Vector3(40, 0, -10);
         }
         else if (collision.gameObject.tag == "GoMain")
         {
-            GameManager.instance.SaveCharacterStats();
-            SceneManager.LoadScene("MainScene");
+            GameManager.instance.character.transform.position = new Vector3(8.5f, -3.5f, 0);
+            GameManager.instance.camera.transform.position = new Vector3(0, 0, -10);
         }
     }
-
-    
 }

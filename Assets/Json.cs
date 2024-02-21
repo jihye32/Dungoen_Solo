@@ -79,6 +79,19 @@ public class Json : MonoBehaviour
         return playerData.name;
     }
 
+    public int GetLevel()
+    {
+        return playerData.level;
+    }
+    public int GetCoin()
+    {
+        return playerData.coin;
+    }
+    public int GetHealth()
+    {
+        return playerData.health;
+    }
+
     public float GetSpeed()
     {
         return playerData.speed;
