@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,27 +17,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float critical;
     [HideInInspector] public int coin;
     private CharacterInputController characterInputController;
-    private CharacterLevel characterLevel;
-    public CharacterHealth characterHealth;
-
-    [Header("UI")]
-    public GameObject statusButton;
-    public GameObject inventoryButton;
-    public GameObject statusUI;
-    public GameObject inventoryUI;
-
-    public TMP_Text levelText;
-    public TMP_Text levelExpText;
-    public TMP_Text levelUpExpText;
-    public Image levelBar;
-
-    public TMP_Text attackText;
-    public TMP_Text defenseText;
-    public TMP_Text healthText;
-    public TMP_Text criticalText;
-    public TMP_Text coinText;
-    
-
+    [HideInInspector] public CharacterLevel characterLevel;
+    [HideInInspector] public CharacterHealth characterHealth;
 
     [Header("Inventory")]
     private Inventory inventory;
@@ -46,7 +28,7 @@ public class GameManager : MonoBehaviour
 
 
     public Item testItem;
-
+    private UIManager UiManager;
 
     public static GameManager instance;
 
@@ -57,11 +39,14 @@ public class GameManager : MonoBehaviour
         characterInputController = character.GetComponent<CharacterInputController>();
         characterLevel = character.GetComponent<CharacterLevel>();
         characterHealth = character.GetComponent<CharacterHealth>();
+
+        UiManager = GetComponentInChildren<UIManager>();
     }
 
     private void Start()
     {
         StartCharacterSetting();
+        UiManager.StartCharacterUISetting();
 
         characterHealth.MakecharacterHealth(health);
 
@@ -74,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         if(change_status)
         {
-            ChageCharacterSetting();
+            UiManager.ChageCharacterUISetting();
             change_status = false;
         }
     }
@@ -88,26 +73,6 @@ public class GameManager : MonoBehaviour
         defense = characterInputController.statusData.defense;
         critical = characterInputController.statusData.critical;
 
-        levelText.text = string.Format("Lv. {0}", level);
-        healthText.text = health.ToString();
-        coinText.text = coin.ToString("N0");
-        attackText.text = attack.ToString();
-        defenseText.text = defense.ToString();
-        criticalText.text = critical.ToString();
-
-        levelExp = 9;
-        levelBar.fillAmount = levelExp / characterLevel.levelUpExp[0];
-        levelExpText.text = levelExp.ToString();
-        levelUpExpText.text = characterLevel.levelUpExp[0].ToString();
-
         change_status = false;
-    }
-
-    private void ChageCharacterSetting()
-    {
-        healthText.text = health.ToString();
-        attackText.text = attack.ToString();
-        defenseText.text = defense.ToString();
-        criticalText.text = critical.ToString();
     }
 }

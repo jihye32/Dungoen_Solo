@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-    //수정 필요!
-    //intro, select Scene
+    private UIManager uiManager;
+
+    private void Awake()
+    {
+        uiManager = GetComponent<UIManager>();
+    }
+
+
+    //LoadScene
     public void OnStartButton()
     {
         SceneManager.LoadScene("SelectScene");
@@ -19,34 +26,41 @@ public class ButtonController : MonoBehaviour
 
 
     //status UI
-    public void OnClickCharacterStatus()
+    public void OnCharacterStatus()
     {
-        GameManager.instance.statusUI.SetActive(true);
-        GameManager.instance.statusButton.SetActive(false);
-        GameManager.instance.inventoryButton.SetActive(false);
-        GameManager.instance.characterHealth.heartParent.SetActive(false);
+        if (!uiManager.statusUI.activeInHierarchy)
+        {
+            uiManager.statusUI.SetActive(true);
+        }
     }
 
-    public void OffClickCharacterStatus()
+    public void OffCharacterStatus()
     {
-        GameManager.instance.statusUI.SetActive(false);
-        GameManager.instance.statusButton.SetActive(true);
-        GameManager.instance.inventoryButton.SetActive(true);
-        GameManager.instance.characterHealth.heartParent.SetActive(true);
+        uiManager.statusUI.SetActive(false);
     }
 
     //inventory UI
-    public void OnClickCharacterInventory()
+    public void OnCharacterInventory()
     {
-        GameManager.instance.inventoryUI.SetActive(true);
-        GameManager.instance.statusButton.SetActive(false);
-        GameManager.instance.inventoryButton.SetActive(false);
+        if (!uiManager.inventoryUI.activeInHierarchy)
+        {
+            uiManager.inventoryUI.SetActive(true);
+        }
     }
 
-    public void OffClickCharacterInventory()
+    public void OffCharacterInventory()
     {
-        GameManager.instance.inventoryUI.SetActive(false);
-        GameManager.instance.statusButton.SetActive(true);
-        GameManager.instance.inventoryButton.SetActive(true);
+        uiManager.inventoryUI.SetActive(false);
+    }
+
+    //Heart UI
+    public void OnHeartUI()
+    {
+        GameManager.instance.characterHealth.heartParent.SetActive(true);
+    }
+
+    public void OffHeartUI()
+    {
+        GameManager.instance.characterHealth.heartParent.SetActive(false);
     }
 }

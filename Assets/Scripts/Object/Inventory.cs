@@ -36,8 +36,13 @@ public class Inventory : MonoBehaviour
             newSlot.transform.parent = slotsParent.transform;
             GameManager.instance.inventorySlots[i] = newSlot;
             inventoryItem[i] = null;
+
+            //파라미터값 변경 -----------------------------------------------------------------------------------------------------------------------------
+            //AddListener은 onClick에 함수를 넣어줌.
+            //정수형 변수를 for문 안에 선언하여 실행될 함수의 파라미터에 넣어줌. i로 하거나 for문 밖으로 정수를 선언할 경우 차례대로 들어가지 않음. 
+            int n = i;
+            GameManager.instance.inventorySlots[i].GetComponent<Button>().onClick.AddListener(() => OnSelectSlot(n));
         }
-        ChangeParameter();
     }
     
     public void ItemInInventory(Item item)
@@ -76,18 +81,6 @@ public class Inventory : MonoBehaviour
             GameManager.instance.health -= inventoryItem[index].itemData.plus_health;
             GameManager.instance.inventorySlots[index].transform.Find("Equip").gameObject.SetActive(false);
             GameManager.instance.change_status = true;
-        }
-    }
-
-    //파라미터 변경
-    public void ChangeParameter()
-    {
-        for(int i = 0; i <  inventoryItem.Length; i++)
-        {
-            //AddListener은 onClick에 함수를 넣어줌.
-            //정수형 변수를 for문 안에 선언하여 실행될 함수의 파라미터에 넣어줌. i로 하거나 for문 밖으로 정수를 선언할 경우 차례대로 들어가지 않음. 
-            int n = i;
-            GameManager.instance.inventorySlots[i].GetComponent<Button>().onClick.AddListener(() => OnSelectSlot(n));
         }
     }
 
