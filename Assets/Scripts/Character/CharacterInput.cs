@@ -14,7 +14,7 @@ public class CharacterInput : MonoBehaviour
     //InputData
     protected void moveMent(Vector2 direction)
     {
-        direction = direction * GameManager.instance.speed;
+        direction = direction * Json.instance.GetSpeed();
         rigidBody.velocity = direction;
     }
 
