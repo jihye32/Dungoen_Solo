@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     //Ä³¸¯ÅÍ UI
     public void StartCharacterUISetting()
     {
-        //playerName.text = Json.instance.GetName();
+        playerName.text = Json.instance.GetName();
         levelText.text = string.Format("Lv. {0}", GameManager.instance.level);
         healthText.text = GameManager.instance.health.ToString();
         coinText.text = GameManager.instance.coin.ToString("N0");

@@ -8,7 +8,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
-    public GameObject character;
+    public GameObject[] characterPrefabs;
+    public GameObject[] characterPosition;
+    [HideInInspector] public GameObject character;
     [HideInInspector] public int level;
     [HideInInspector] public int levelExp;
     [HideInInspector] public int health;
@@ -36,10 +38,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        Json.instance.LoadData();
+
         inventory = GetComponent<Inventory>();
+        character = Instantiate(characterPrefabs[0]);
         characterStats = character.GetComponent<Character>();
         characterLevel = character.GetComponent<CharacterLevel>();
-        characterHealth = character.GetComponent<CharacterHealth>();
+        characterHealth = GetComponent<CharacterHealth>();
 
         UiManager = GetComponentInChildren<UIManager>();
     }
@@ -68,6 +74,9 @@ public class GameManager : MonoBehaviour
 
     private void StartCharacterSetting()
     {
+        character.transform.parent = characterPosition[0].transform;
+        character.transform.position = characterPosition[0].transform.position;
+
         level = characterStats.statusData.level;
         health = characterStats.statusData.max_health;
         coin = characterStats.statusData.coin;
@@ -86,6 +95,7 @@ public class GameManager : MonoBehaviour
         Json.instance.SetCoin(coin);
         Json.instance.SetHealth(health);
         Json.instance.SetExp(levelExp);
+        Json.instance.SetSpeed(speed);
         Json.instance.SetAttack(attack);
         Json.instance.SetDefense(defense);
         Json.instance.SetCritical(critical);
