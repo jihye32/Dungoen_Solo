@@ -4416,6 +4416,7 @@ MonoBehaviour:
   statusUI: {fileID: 607666498}
   inventoryUI: {fileID: 1667947182}
   levelBar: {fileID: 815755651}
+  playerName: {fileID: 1620714810}
   levelText: {fileID: 734155733}
   levelExpText: {fileID: 1499902907}
   levelUpExpText: {fileID: 1960153448}
@@ -5666,7 +5667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0b6b75d2f5edc42849350884cc7b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusData: {fileID: 11400000, guid: 937790d4bcc8682429949222794231f1, type: 2}
   inter_action: 0
 --- !u!114 &1578952146
 MonoBehaviour:
@@ -5739,6 +5739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faed4c29375cd00499e7397e032f29b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusData: {fileID: 11400000, guid: 937790d4bcc8682429949222794231f1, type: 2}
 --- !u!1 &1620714808
 GameObject:
   m_ObjectHideFlags: 0
@@ -6472,7 +6473,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844887590}
-  - component: {fileID: 1844887589}
+  - component: {fileID: 1844887593}
+  - component: {fileID: 1844887592}
   - component: {fileID: 1844887591}
   m_Layer: 0
   m_Name: GameManager
@@ -6481,32 +6483,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1844887589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844887587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd2f90c5de64314fb8d40f4b81e97d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 1578952141}
-  level: 0
-  levelExp: 0
-  health: 0
-  attack: 0
-  defense: 0
-  critical: 0
-  coin: 0
-  characterLevel: {fileID: 0}
-  characterHealth: {fileID: 0}
-  inventorySlots: []
-  inventorySlotCount: 16
-  change_status: 0
-  testItem: {fileID: 1256599399}
 --- !u!4 &1844887590
 Transform:
   m_ObjectHideFlags: 0
@@ -6532,10 +6508,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844887587}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b320a62b1644ab94e837bdaa13453fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1844887592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844887587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc825561882b14b4ab970d591ad6ad57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slotsParent: {fileID: 148513543}
+--- !u!114 &1844887593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844887587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd2f90c5de64314fb8d40f4b81e97d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 1578952141}
+  level: 0
+  levelExp: 0
+  health: 0
+  speed: 0
+  attack: 0
+  defense: 0
+  critical: 0
+  coin: 0
+  characterLevel: {fileID: 0}
+  characterHealth: {fileID: 0}
+  inventorySlots: []
+  inventorySlotCount: 16
+  change_status: 0
+  testItem: {fileID: 1256599399}
 --- !u!1 &1914433252
 GameObject:
   m_ObjectHideFlags: 0

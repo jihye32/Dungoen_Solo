@@ -6,11 +6,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("IntroScene")]
-
-    [Header("SelectScene")]
-
-    [Header("MainScene")]
     [Header("UI Object")]
     public GameObject statusUI;
     public GameObject inventoryUI;
@@ -18,6 +13,7 @@ public class UIManager : MonoBehaviour
 
 
     [Header("UI Text")]
+    public TMP_Text playerName;
     public TMP_Text levelText;
     public TMP_Text levelExpText;
     public TMP_Text levelUpExpText;
@@ -49,6 +45,7 @@ public class UIManager : MonoBehaviour
     //Ä³¸¯ÅÍ UI
     public void StartCharacterUISetting()
     {
+        //playerName.text = Json.instance.GetName();
         levelText.text = string.Format("Lv. {0}", GameManager.instance.level);
         healthText.text = GameManager.instance.health.ToString();
         coinText.text = GameManager.instance.coin.ToString("N0");

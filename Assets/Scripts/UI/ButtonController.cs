@@ -19,11 +19,6 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene("SelectScene");
     }
 
-    public void OnMainSceneButton()
-    {
-        SceneManager.LoadScene("MainScene");
-    }
-
 
     //status UI
     public void OnCharacterStatus()

@@ -10,13 +10,14 @@ public class GameManager : MonoBehaviour
     [Header("Player")]
     public GameObject character;
     [HideInInspector] public int level;
-    [HideInInspector] public float levelExp;
+    [HideInInspector] public int levelExp;
     [HideInInspector] public int health;
+    [HideInInspector] public float speed;
     [HideInInspector] public int attack;
     [HideInInspector] public int defense;
     [HideInInspector] public float critical;
     [HideInInspector] public int coin;
-    private CharacterInputController characterInputController;
+    private Character characterStats;
     [HideInInspector] public CharacterLevel characterLevel;
     [HideInInspector] public CharacterHealth characterHealth;
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         inventory = GetComponent<Inventory>();
-        characterInputController = character.GetComponent<CharacterInputController>();
+        characterStats = character.GetComponent<Character>();
         characterLevel = character.GetComponent<CharacterLevel>();
         characterHealth = character.GetComponent<CharacterHealth>();
 
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         StartCharacterSetting();
         UiManager.StartCharacterUISetting();
+        SaveCharacterStats();
 
         characterHealth.MakecharacterHealth(health);
 
@@ -66,13 +68,27 @@ public class GameManager : MonoBehaviour
 
     private void StartCharacterSetting()
     {
-        level = characterInputController.statusData.level;
-        health = characterInputController.statusData.max_health;
-        coin = characterInputController.statusData.coin;
-        attack = characterInputController.statusData.attack;
-        defense = characterInputController.statusData.defense;
-        critical = characterInputController.statusData.critical;
+        level = characterStats.statusData.level;
+        health = characterStats.statusData.max_health;
+        coin = characterStats.statusData.coin;
+        speed= characterStats.statusData.speed;
+        attack = characterStats.statusData.attack;
+        defense = characterStats.statusData.defense;
+        critical = characterStats.statusData.critical;
 
         change_status = false;
+    }
+
+    //CharacterStats ¿˙¿Â
+    public void SaveCharacterStats()
+    {
+        Json.instance.SetLevel(level);
+        Json.instance.SetCoin(coin);
+        Json.instance.SetHealth(health);
+        Json.instance.SetExp(levelExp);
+        Json.instance.SetAttack(attack);
+        Json.instance.SetDefense(defense);
+        Json.instance.SetCritical(critical);
+        Json.instance.SaveData();
     }
 }
