@@ -13,7 +13,7 @@ using System.IO;
 
 class PlayerData
 {
-    public Sprite characterSprite;
+    public int characterIndex;
     public string name;
     public int level;
     public int coin;
@@ -69,19 +69,25 @@ public class Json : MonoBehaviour
     }
 
     //저장된 값 가져오기
-    public Sprite GetCharacter()
+    public int GetCharacter()
     {
-        return playerData.characterSprite;
+        return playerData.characterIndex;
     }
+
     public string GetName()
     {
         return playerData.name;
     }
 
-    //바뀌는 데이터 값 save
-    public void SetCharacter(Sprite sprite)
+    public float GetSpeed()
     {
-        playerData.characterSprite = sprite;
+        return playerData.speed;
+    }
+
+    //바뀌는 데이터 값 save
+    public void SetCharacter(int index)
+    {
+        playerData.characterIndex = index;
     }
 
     public void SetName(string name)
@@ -105,7 +111,7 @@ public class Json : MonoBehaviour
     {
         playerData.exp = exp;
     }
-    public void SetSpeed(int speed)
+    public void SetSpeed(float speed)
     {
         playerData.speed = speed;
     }
