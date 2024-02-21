@@ -7,8 +7,9 @@ public class CharacterLevel : MonoBehaviour
     [HideInInspector] public float[] levelUpExp = new float[2];
     [HideInInspector] public float levelup_plusExp;
 
-    private void Start()
+    private void Awake()
     {
+        //Json으로 저장해야할 것.
         levelUpExp[0] = 12;
         levelUpExp[1] = 25;
     }
