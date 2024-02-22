@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
@@ -9,16 +10,31 @@ using UnityEngine.UI;
 
 public class SelectScene : MonoBehaviour
 {
+    [Header("name")]
     public TMP_InputField nameString;
     public Button nameSettingButton;
 
+    [Header("character")]
     public GameObject characterBoard;
     public Button characterBoardButton;
     public Button characterSelect1Button;
-    public Button characterSelect2Button;
+    public Button characterSelect2Button;//characterSelectButton은 추후 배열로 바꿔주면 편할 듯
     [HideInInspector] public int characterIndex;
 
+    private PlayerData playerData;
+
+    private void Awake()
+    {
+        playerData = Json.Instance.GetPlayerData();
+    }
+
     private void Start()
+    {
+        SettingButton();
+    }
+
+    //button--------------------------------------------
+    private void SettingButton()
     {
         nameSettingButton.onClick.AddListener(() => SettingName());
 
@@ -35,15 +51,15 @@ public class SelectScene : MonoBehaviour
     {
         if (!characterBoard.activeInHierarchy)
         {
-            //Json.instance.을 누르면 왜 자동 완성으로 name이 나오는지.
-            //근데 이 name을 사용하면 캐릭터 name으로 저장은 안됨.
-            Json.instance.SetName(nameString.text);
-            Json.instance.SetCharacter(characterIndex);
-            Json.instance.SaveData();
+            //이름 받아오는 중
+            playerData.name = nameString.text;
+            
+            //선택한 정보 저장
+            Json.Instance.SaveData(playerData);
             SceneManager.LoadScene("MainScene");
         }
     }
-
+    
     public void OnCharacterSelectBoard()
     {
         characterBoard.SetActive(true);
@@ -57,5 +73,6 @@ public class SelectScene : MonoBehaviour
     public void SettingCharacter(int index)
     {
         characterIndex = index;
+        playerData.characterIndex = characterIndex; //characterIndex를 통해 나타나는 캐릭터 이미지 변경 함수 생성
     }
 }
