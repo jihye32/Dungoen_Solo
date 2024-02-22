@@ -8,10 +8,12 @@ public class Character : MonoBehaviour
 {
     public AttackStatusData statusData;
     [HideInInspector] public CharacterLevel level;
+    CharacterInputController inputController;
 
     private void Awake()
     {
         level = GetComponent<CharacterLevel>();
+        inputController = GetComponent<CharacterInputController>();
     }
 
     public void StartCharacterSetting()
@@ -31,12 +33,16 @@ public class Character : MonoBehaviour
         if(collision.gameObject.tag == "EnterDungoen")
         {
             GameManager.instance.character.transform.position = new Vector3(31.5f, -3.5f, 0);
-            GameManager.instance.GetComponent<Camera>().transform.position = new Vector3(40, 0, -10);
+            GameManager.instance._camera.transform.position = new Vector3(40, 0, -10);
         }
         else if (collision.gameObject.tag == "GoMain")
         {
             GameManager.instance.character.transform.position = new Vector3(8.5f, -3.5f, 0);
-            GameManager.instance.GetComponent<Camera>().transform.position = new Vector3(0, 0, -10);
+            GameManager.instance._camera.transform.position = new Vector3(0, 0, -10);
+        }
+        else if(collision.gameObject.tag == "GoDungoen")
+        {
+            SceneManager.LoadScene("DungoenScene");
         }
     }
 }
