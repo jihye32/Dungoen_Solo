@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject character;
 
     [HideInInspector] public Character characterStats;
+    [HideInInspector] public CharacterHealth characterHealth;
     [HideInInspector] public int level;
     [HideInInspector] public int levelExp;
     [HideInInspector] public int health;
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         character.transform.position = characterPosition.transform.position;
 
         characterStats = character.GetComponent<Character>();
+        characterHealth = GetComponent<CharacterHealth>();
     }
 
     private void Start()
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         //세팅 및 처음 스탯 저장
         characterStats.StartCharacterSetting(playerData);
         SaveCharacterStats();
+        characterHealth.MakecharacterHealth(playerData.health);
     }
 
     private void Update()

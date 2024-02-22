@@ -7,18 +7,11 @@ using UnityEngine.TextCore.Text;
 public class Character : MonoBehaviour
 {
     public AttackStatusData statusData;
-    [HideInInspector] public CharacterHealth health;
     [HideInInspector] public CharacterLevel level;
 
     private void Awake()
     {
-        health = GetComponent<CharacterHealth>();
         level = GetComponent<CharacterLevel>();
-    }
-
-    private void Start()
-    {
-        health.MakecharacterHealth(statusData.max_health);
     }
 
     public void StartCharacterSetting(PlayerData playerData)
