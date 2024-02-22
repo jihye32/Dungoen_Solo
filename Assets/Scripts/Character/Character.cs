@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
 {
     public AttackStatusData statusData;
     [HideInInspector] public CharacterLevel level;
-    CharacterInputController inputController;
+    public CharacterInputController inputController;
 
     private void Awake()
     {

@@ -4,52 +4,60 @@ using UnityEngine;
 
 public class StoreNPC : MonoBehaviour
 {
-    //private GameObject player;
-    //private GameObject storeUseUI;
-    //public GameObject storeUI;
-    //private NPCUI npuUI;
-    
+    private GameObject player;
+    public GameObject storeUseUI;
+    public GameObject storeUI;
 
-    //private void Start()
-    //{
-        
-    //    player = GameManager.instance.player;
-    //    npuUI = GetComponentInParent<NPCUI>();
-    //}
+    private void Awake()
+    {
+        player = GameManager.instance.character;
+    }
 
-    //private void Update()
-    //{
-    //    OnUseStore();
-    //    OnStoreUI();
-    //}
+    private void Update()
+    {
+        OnUseStore();
 
-    //private void OnUseStore()
-    //{
-    //    if (transform.position.x - player.transform.position.x < 1 && transform.position.x - player.transform.position.x > -1)
-    //    {
-    //        if(storeUseUI == null)
-    //        {
-    //            storeUseUI = npuUI.useStoreUI;
-    //            npuUI.useStoreUI.SetActive(true);
-    //        }
-    //    }
-    //    else if(storeUseUI != null)
-    //    {
-    //        storeUseUI = null;
-    //        npuUI.useStoreUI.SetActive(false);
-    //    }
-    //}
+        if (storeUseUI.activeInHierarchy && GameManager.instance.characterStats.inputController.inter_action)
+        {
+            OnStoreText();
+        }
+    }
 
-    //private void OnStoreUI()
-    //{
-    //    if(storeUseUI != null && GameManager.instance.player_interaction)
-    //    {
-    //        storeUI.SetActive(true);
-    //    }
-    //}
+    //상점 사용 가능하도록 [W]상점 UI 보여주기
+    private void OnUseStore()
+    {
+        if (transform.position.x - player.transform.position.x < 2 && transform.position.x - player.transform.position.x > -2)
+        {
+            if (!storeUseUI.activeInHierarchy && !storeUI.activeInHierarchy)
+            {
+                storeUseUI.SetActive(true);
+            }
+        }
+        else
+        {
+            if(storeUseUI.activeInHierarchy)
+            {
+                storeUseUI.SetActive(false);
+            }
+        }
+    }
 
-    //public void OffStoreUI()
-    //{
-    //    storeUI.SetActive(false);
-    //}
+    //상점-------------------------------------------------
+    //상점 미완이므로 상점 미완 말풍선 생성
+    private void OnStoreText()
+    {
+        OnStoreUI();
+        Invoke("OffStoreUI", 2f);
+    }
+
+    private void OnStoreUI()
+    {
+        storeUI.SetActive(true);
+        storeUseUI.SetActive(false);
+    }
+
+    public void OffStoreUI()
+    {
+        storeUI.SetActive(false);
+    }
 }

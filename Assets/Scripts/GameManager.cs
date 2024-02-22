@@ -32,17 +32,21 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UIController UIcontroller;
     public Camera _camera;
 
-    public static GameManager instance;
+    private static GameManager Instance;
+    public static GameManager instance
+    { 
+        get
+        {
+            if (Instance == null)
+            {
+                Instance = new GameManager();
+            }
+            return Instance;
+        } 
+    }
 
     private void Awake()
     {
-        //싱글턴
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else Destroy(this);
-
         //Json 불러오기
         Json.Instance.LoadData();
         playerData = Json.Instance.GetPlayerData();
