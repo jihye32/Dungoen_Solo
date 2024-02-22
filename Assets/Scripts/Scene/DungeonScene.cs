@@ -17,6 +17,8 @@ public class DungeonScene : MonoBehaviour
 
     [HideInInspector] public CharacterLevel characterLevel;
     [HideInInspector] public CharacterHealth characterHealth;
+
+    private UIController UIcontroller;
     
     //변하지 않을 것
     private int attack;
@@ -37,6 +39,8 @@ public class DungeonScene : MonoBehaviour
         character.GetComponent<PlayerInput>().enabled = false;
         characterLevel = character.GetComponent<CharacterLevel>();
         characterHealth = GetComponent<CharacterHealth>();
+
+        UIcontroller = GetComponentInChildren<UIController>();
     }
 
     private void Start()
@@ -44,6 +48,7 @@ public class DungeonScene : MonoBehaviour
         StartCharacterSetting();
 
         characterHealth.MakecharacterHealth(playerData.health);
+        UIcontroller.StartCharacterUISetting(playerData);
     }
 
     private void StartCharacterSetting()
