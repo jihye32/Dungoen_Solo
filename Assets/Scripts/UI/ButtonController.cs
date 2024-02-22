@@ -51,11 +51,11 @@ public class ButtonController : MonoBehaviour
     //Heart UI
     public void OnHeartUI()
     {
-        GameManager.instance.characterHealth.heartParent.SetActive(true);
+        GameManager.instance.characterStats.health.heartParent.SetActive(true);
     }
 
     public void OffHeartUI()
     {
-        GameManager.instance.characterHealth.heartParent.SetActive(false);
+        GameManager.instance.characterStats.health.heartParent.SetActive(false);
     }
 }

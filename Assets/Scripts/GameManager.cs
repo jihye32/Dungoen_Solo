@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject characterPosition;
     [HideInInspector] public GameObject character;
 
-    private Character characterStats;
+    [HideInInspector] public Character characterStats;
     [HideInInspector] public int level;
     [HideInInspector] public int levelExp;
     [HideInInspector] public int health;

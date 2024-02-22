@@ -7,8 +7,8 @@ using UnityEngine.TextCore.Text;
 public class Character : MonoBehaviour
 {
     public AttackStatusData statusData;
-    public CharacterHealth health;
-    public CharacterLevel level;
+    [HideInInspector] public CharacterHealth health;
+    [HideInInspector] public CharacterLevel level;
 
     private void Awake()
     {
