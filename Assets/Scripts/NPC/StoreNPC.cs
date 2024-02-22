@@ -8,7 +8,7 @@ public class StoreNPC : MonoBehaviour
     public GameObject storeUseUI;
     public GameObject storeUI;
 
-    private void Awake()
+    private void Start()
     {
         player = GameManager.instance.character;
     }

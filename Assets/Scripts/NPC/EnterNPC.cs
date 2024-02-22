@@ -12,13 +12,10 @@ public class EnterNPC : MonoBehaviour
     public Button enterButton;
     public Button exitButton;
 
-    private void Awake()
-    {
-        player = GameManager.instance.character;
-    }
-
     private void Start()
     {
+        player = GameManager.instance.character;
+
         enterButton.onClick.AddListener(() => OffDungoenEnterUI());
         enterButton.onClick.AddListener(() => OnGoDungoen());
 
