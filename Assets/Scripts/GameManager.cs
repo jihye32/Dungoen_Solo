@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
         if(change_status)
         {
-            //UiManager.ChageCharacterUISetting();
+            UIcontroller.ChageCharacterUISetting();
             change_status = false;
         }
     }

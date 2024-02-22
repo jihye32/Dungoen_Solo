@@ -57,12 +57,12 @@ public class UIController : MonoBehaviour
         levelUpExpText.text = playerData.levelexp.ToString();
     }
 
-    public void ChageCharacterUISetting(PlayerData playerData)
+    public void ChageCharacterUISetting()
     {
-        healthText.text = playerData.health.ToString();
-        attackText.text = playerData.attack.ToString();
-        defenseText.text = playerData.defense.ToString();
-        criticalText.text = playerData.critical.ToString();
+        healthText.text = GameManager.instance.health.ToString();
+        attackText.text = GameManager.instance.attack.ToString();
+        defenseText.text = GameManager.instance.defense.ToString();
+        criticalText.text = GameManager.instance.critical.ToString();
     }
 
     //¹öÆ° UI
