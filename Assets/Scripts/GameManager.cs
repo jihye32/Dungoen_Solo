@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
-    PlayerData playerData;
+    public PlayerData playerData;
     public GameObject[] characterPrefabs;
     public GameObject characterPosition;
     [HideInInspector] public GameObject character;
@@ -28,9 +29,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool change_status = false;
     public Item testItem;
-    public UIManager UiManager;
+    [HideInInspector] public UIController UIcontroller;
     public Camera _camera;
-
 
     public static GameManager instance;
 
@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         playerData = Json.Instance.GetPlayerData();
 
         _camera = Camera.main;
+        UIcontroller = GetComponentInChildren<UIController>();
+
 
         //캐릭터 생성
         character = Instantiate(characterPrefabs[playerData.characterIndex]);
@@ -60,9 +62,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //세팅 및 처음 스탯 저장
-        characterStats.StartCharacterSetting(playerData);
+        characterStats.StartCharacterSetting();
         SaveCharacterStats();
+
+        //UI 세팅
         characterHealth.MakecharacterHealth(playerData.health);
+        UIcontroller.StartCharacterUISetting(playerData);
     }
 
     private void Update()

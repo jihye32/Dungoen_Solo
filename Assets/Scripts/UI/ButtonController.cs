@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-    private UIManager uiManager;
+    private UIController UIcontroller;
 
     private void Awake()
     {
-        uiManager = GetComponent<UIManager>();
+        UIcontroller = GetComponent<UIController>();
     }
 
 
@@ -23,29 +24,29 @@ public class ButtonController : MonoBehaviour
     //status UI
     public void OnCharacterStatus()
     {
-        if (!uiManager.statusUI.activeInHierarchy)
+        if (!UIcontroller.statusUI.activeInHierarchy)
         {
-            uiManager.statusUI.SetActive(true);
+            UIcontroller.statusUI.SetActive(true);
         }
     }
 
     public void OffCharacterStatus()
     {
-        uiManager.statusUI.SetActive(false);
+        UIcontroller.statusUI.SetActive(false);
     }
 
     //inventory UI
     public void OnCharacterInventory()
     {
-        if (!uiManager.inventoryUI.activeInHierarchy)
+        if (!UIcontroller.inventoryUI.activeInHierarchy)
         {
-            uiManager.inventoryUI.SetActive(true);
+            UIcontroller.inventoryUI.SetActive(true);
         }
     }
 
     public void OffCharacterInventory()
     {
-        uiManager.inventoryUI.SetActive(false);
+        UIcontroller.inventoryUI.SetActive(false);
     }
 
     //Heart UI

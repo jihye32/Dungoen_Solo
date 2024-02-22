@@ -4172,8 +4172,6 @@ GameObject:
   - component: {fileID: 1844887590}
   - component: {fileID: 1844887593}
   - component: {fileID: 1844887594}
-  - component: {fileID: 1844887592}
-  - component: {fileID: 1844887591}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4197,31 +4195,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1844887591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844887587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b320a62b1644ab94e837bdaa13453fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1844887592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844887587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc825561882b14b4ab970d591ad6ad57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotsParent: {fileID: 1190692181102057819}
 --- !u!114 &1844887593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,8 +4209,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefabs:
   - {fileID: 6422057761505040365, guid: 49137553eec961346873cfbe7a6d60ed, type: 3}
+  - {fileID: 6422057761505040365, guid: 49137553eec961346873cfbe7a6d60ed, type: 3}
   characterPosition: {fileID: 133609944}
   character: {fileID: 0}
+  characterStats: {fileID: 0}
+  characterHealth: {fileID: 0}
   level: 0
   levelExp: 0
   health: 0
@@ -4246,14 +4222,10 @@ MonoBehaviour:
   defense: 0
   critical: 0
   coin: 0
-  characterLevel: {fileID: 0}
-  characterHealth: {fileID: 0}
-  inventorySlots: []
-  inventorySlotCount: 16
   change_status: 0
   testItem: {fileID: 1256599399}
-  UiManager: {fileID: 6727047919342857829}
-  camera: {fileID: 519420031}
+  UIcontroller: {fileID: 0}
+  _camera: {fileID: 519420031}
 --- !u!114 &1844887594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5915,6 +5887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3860825813494768458}
+  - component: {fileID: 3860825813494768459}
   m_Layer: 0
   m_Name: Inventory_UI
   m_TagString: Untagged
@@ -6616,6 +6589,21 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3860825813494768459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681862635369643243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc825561882b14b4ab970d591ad6ad57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySlots: []
+  inventorySlotCount: 16
+  slotsParent: {fileID: 1190692181102057819}
 --- !u!114 &3933073544251291295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7569,7 +7557,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4008288120458628759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
