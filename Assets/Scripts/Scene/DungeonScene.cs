@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class DungeonScene : MonoBehaviour
 {
-    //게임 매니저를 상속받는 것은?
-
+    PlayerData playerData;
     public GameObject[] characterPrefabs;
     public GameObject characterPosition;
     private GameObject character;
@@ -30,21 +30,20 @@ public class DungeonScene : MonoBehaviour
 
     private void Awake()
     {
-        //Json을 싱글턴을 했는데 GameObject에 Json.cs를 넣어줘야하는 이유. -> GameManager.cs랑 같은 이유... 근데 무슨 이유?
-        //Json 싱글턴이 후순위인 이유
-        
+        Json.Instance.LoadData();
+        playerData = Json.Instance.GetPlayerData();
+
         character = Instantiate(characterPrefabs[0]);
+        character.GetComponent<PlayerInput>().enabled = false;
         characterLevel = character.GetComponent<CharacterLevel>();
         characterHealth = GetComponent<CharacterHealth>();
     }
 
     private void Start()
     {
-        Json.instance.LoadData();
-
         StartCharacterSetting();
 
-        characterHealth.MakecharacterHealth(Json.instance.GetHealth());
+        characterHealth.MakecharacterHealth(playerData.health);
     }
 
     private void StartCharacterSetting()
@@ -54,11 +53,11 @@ public class DungeonScene : MonoBehaviour
 
     public void SaveCharacterStats()
     {
-        Json.instance.SetLevel(level);
-        Json.instance.SetCoin(coin);
-        Json.instance.SetHealth(health);
-        Json.instance.SetExp(have_exp);
-        Json.instance.SetLevelExp(characterLevel.levelUpExp[0]);
-        Json.instance.SaveData();
+        playerData.level = level;
+        playerData.coin = coin;
+        playerData.health = health;
+        playerData.exp = have_exp;
+        playerData.levelexp = characterLevel.levelUpExp[0];
+        Json.Instance.SaveData(playerData);
     }
 }
