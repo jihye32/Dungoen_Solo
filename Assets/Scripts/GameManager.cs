@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCharacterSetting();
-        UiManager.StartCharacterUISetting();
         SaveCharacterStats();
 
         characterHealth.MakecharacterHealth(health);
@@ -96,6 +95,7 @@ public class GameManager : MonoBehaviour
         Json.instance.SetCoin(coin);
         Json.instance.SetHealth(health);
         Json.instance.SetExp(levelExp);
+        Json.instance.SetLevelExp(characterLevel.levelUpExp[0]);
         Json.instance.SetSpeed(speed);
         Json.instance.SetAttack(attack);
         Json.instance.SetDefense(defense);
