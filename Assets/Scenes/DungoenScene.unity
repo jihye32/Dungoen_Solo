@@ -633,9 +633,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 621961261}
-  - component: {fileID: 621961262}
   - component: {fileID: 621961260}
   - component: {fileID: 621961259}
+  - component: {fileID: 621961262}
   m_Layer: 0
   m_Name: DungoenManager
   m_TagString: Untagged

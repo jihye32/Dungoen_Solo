@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
 
 public class DungeonScene : MonoBehaviour
 {
@@ -15,15 +17,22 @@ public class DungeonScene : MonoBehaviour
 
     [HideInInspector] public CharacterLevel characterLevel;
     [HideInInspector] public CharacterHealth characterHealth;
-
-    //추가해야할 것 : 캐릭터 레벨, 이름, 레벨바, 코인 UI 연결 / attack, defense, critical 가져오기
-
-
+    
+    //변하지 않을 것
+    private int attack;
+    private int defense;
+    private float critical;
+    //변할 것
+    private int have_exp;
+    private int level;
+    private int coin;
+    private int health;
 
     private void Awake()
     {
-        Json.instance.LoadData();
-
+        //Json을 싱글턴을 했는데 GameObject에 Json.cs를 넣어줘야하는 이유. -> GameManager.cs랑 같은 이유... 근데 무슨 이유?
+        //Json 싱글턴이 후순위인 이유
+        
         character = Instantiate(characterPrefabs[0]);
         characterLevel = character.GetComponent<CharacterLevel>();
         characterHealth = GetComponent<CharacterHealth>();
@@ -31,8 +40,9 @@ public class DungeonScene : MonoBehaviour
 
     private void Start()
     {
+        Json.instance.LoadData();
+
         StartCharacterSetting();
-        StartCharacterUISetting();
 
         characterHealth.MakecharacterHealth(Json.instance.GetHealth());
     }
@@ -42,8 +52,13 @@ public class DungeonScene : MonoBehaviour
         character.transform.position = characterPosition.transform.position;
     }
 
-    private void StartCharacterUISetting()
+    public void SaveCharacterStats()
     {
-        //throw new NotImplementedException();
+        Json.instance.SetLevel(level);
+        Json.instance.SetCoin(coin);
+        Json.instance.SetHealth(health);
+        Json.instance.SetExp(have_exp);
+        Json.instance.SetLevelExp(characterLevel.levelUpExp[0]);
+        Json.instance.SaveData();
     }
 }
