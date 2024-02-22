@@ -14,16 +14,15 @@ public class Character : MonoBehaviour
         level = GetComponent<CharacterLevel>();
     }
 
-    public void StartCharacterSetting(PlayerData playerData)
+    public void StartCharacterSetting()
     {
-        playerData.level = statusData.level;
-        playerData.health = statusData.max_health;
-        playerData.coin = statusData.coin; //코인은 playerData에 설정해뒀기 때문에 빼도 되지 않을까 싶음
-        playerData.speed = statusData.speed;
-        playerData.attack = statusData.attack;
-        playerData.defense = statusData.defense;
-        playerData.critical = statusData.critical;
-        Json.Instance.SaveData(playerData);
+        GameManager.instance.level = statusData.level;
+        GameManager.instance.health = statusData.max_health;
+        GameManager.instance.coin = statusData.coin;
+        GameManager.instance.speed = statusData.speed;
+        GameManager.instance.attack = statusData.attack;
+        GameManager.instance.defense = statusData.defense;
+        GameManager.instance.critical = statusData.critical;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
