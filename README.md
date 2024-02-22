@@ -26,6 +26,10 @@
 ----
 ## 추가(2024.2.20)
 
+- Button 부분 모두 AddListener로 교체
+- Json을 사용해서 캐릭터 정보 저장
+- 
+
 [1. 게임화면](#게임화면)
 
 [2. 버튼](#버튼)
@@ -34,6 +38,7 @@
 
 [4. Json](#Json)
 
+[5. Singleton](#Singleton)
 
 ----
 
@@ -147,10 +152,42 @@ public PlayerData GetPlayerData()
 - LoadData와 달리 계속 불러와도 됨.
 - SaveData를 안하고 불러오면 저장안되어있는 파일이 불러와지므로 주의 필요.
   
+----
 
+### Singleton
 
+1. Json
+```
+private static Json instance;
+public static Json Instance 
+{ 
+    get 
+    {
+        if (instance == null) 
+            instance = new Json();
+       
+        return instance;
+    }
+}
+```
+- Unity에서 제공되는 시스템을 사용하지 않으므로 MonoBehaviour 삭제
+- 프로퍼티를 이용해 만들어줌
+- Json이 사용되는 Scene마다 AddComponent를 해주지 않아도 사용 가능
 
+2. GameManager
+```
+private void Awake()
+{
+    if(instance == null)
+    {
+        instance = this;
+    }
+}
+```
+- Unity에서 제공되는 시스템을 사용하기 때문에 MonoBehaviour 삭제 불가
+- AddComponent를 해주지 않으면 사용할 수 없음.
 
++ GameManager을 프로퍼티로 싱글턴을 해주지 않은 이유 : 왜 인지는 모르겠으나 Instantiate로 생성되는 player를 다른 cs에서 가져올 때 null 상태로 가져옴.
 
 
 
