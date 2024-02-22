@@ -40,32 +40,31 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         buttonAddListener();
+        StartCharacterUISetting();
     }
 
     //캐릭터 UI
     public void StartCharacterUISetting()
     {
         playerName.text = Json.instance.GetName();
-        levelText.text = string.Format("Lv. {0}", GameManager.instance.level);
-        healthText.text = GameManager.instance.health.ToString();
-        coinText.text = GameManager.instance.coin.ToString("N0");
-        attackText.text = GameManager.instance.attack.ToString();
-        defenseText.text = GameManager.instance.defense.ToString();
-        criticalText.text = GameManager.instance.critical.ToString();
+        levelText.text = string.Format("Lv. {0}", Json.instance.GetLevel());
+        healthText.text = Json.instance.GetHealth().ToString();
+        coinText.text = Json.instance.GetCoin().ToString("N0");
+        attackText.text = Json.instance.GetAttack().ToString();
+        defenseText.text = Json.instance.GetDefense().ToString();
+        criticalText.text = Json.instance.GetCritical().ToString();
 
-        levelBar.fillAmount = GameManager.instance.levelExp / GameManager.instance.characterLevel.levelUpExp[0];
-        levelExpText.text = GameManager.instance.levelExp.ToString();
-        levelUpExpText.text = GameManager.instance.characterLevel.levelUpExp[0].ToString();
-
-        GameManager.instance.change_status = false;
+        levelBar.fillAmount = Json.instance.GetExp()/ Json.instance.GetLevelExp();
+        levelExpText.text = Json.instance.GetExp().ToString();
+        levelUpExpText.text = Json.instance.GetLevelExp().ToString();
     }
 
     public void ChageCharacterUISetting()
     {
-        healthText.text = GameManager.instance.health.ToString();
-        attackText.text = GameManager.instance.attack.ToString();
-        defenseText.text = GameManager.instance.defense.ToString();
-        criticalText.text = GameManager.instance.critical.ToString();
+        healthText.text = Json.instance.GetHealth().ToString();
+        attackText.text = Json.instance.GetAttack().ToString();
+        defenseText.text = Json.instance.GetDefense().ToString();
+        criticalText.text = Json.instance.GetCritical().ToString();
     }
 
     //버튼 UI

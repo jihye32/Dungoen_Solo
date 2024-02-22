@@ -15,10 +15,11 @@ class PlayerData
 {
     public int characterIndex = 0;
     public string name;
-    public int level;
-    public int coin;
-    public int health;
-    public int exp;
+    public int level = 1;
+    public int coin = 1000;
+    public int health = 10;
+    public int exp = 0;
+    public float levelexp;
     public float speed;
     public int attack;
     public int defense;
@@ -83,19 +84,46 @@ public class Json : MonoBehaviour
     {
         return playerData.level;
     }
+
     public int GetCoin()
     {
         return playerData.coin;
     }
+
     public int GetHealth()
     {
         return playerData.health;
+    }
+
+    public int GetExp()
+    {
+        return playerData.exp;
+    }
+    public float GetLevelExp()
+    {
+        return playerData.levelexp;
     }
 
     public float GetSpeed()
     {
         return playerData.speed;
     }
+
+    public int GetAttack()
+    {
+        return playerData.attack;
+    }
+
+    public int GetDefense()
+    {
+        return playerData.defense;
+    }
+
+    public float GetCritical()
+    {
+        return playerData.critical;
+    }
+
 
     //바뀌는 데이터 값 save
     public void SetCharacter(int index)
@@ -123,6 +151,10 @@ public class Json : MonoBehaviour
     public void SetExp(int exp)
     {
         playerData.exp = exp;
+    }
+    public void SetLevelExp(float levelexp)
+    {
+        playerData.levelexp = levelexp;
     }
     public void SetSpeed(float speed)
     {
