@@ -13,7 +13,7 @@ using System.IO;
 
 class PlayerData
 {
-    public int characterIndex;
+    public int characterIndex = 0;
     public string name;
     public int level;
     public int coin;
