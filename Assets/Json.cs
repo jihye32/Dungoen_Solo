@@ -11,7 +11,7 @@ using System.IO;
  */
 
 
-class PlayerData
+public class PlayerData
 {
     public int characterIndex = 0;
     public string name;
@@ -26,7 +26,8 @@ class PlayerData
     public float critical;
 }
 
-public class Json : MonoBehaviour
+//
+public class Json
 {
     /*
     Json 데이터 저장 방법
@@ -37,93 +38,46 @@ public class Json : MonoBehaviour
     string name = player2.name;
     */
 
-    PlayerData playerData = new PlayerData();
+    private PlayerData playerData = new PlayerData();
 
-    string path;
-    string filename = "save";
+    //유니티에서 알아서 만들어주는 경로 + /생성하는 파일 명
+    string path = $"{Application.persistentDataPath}/save";
 
-    public static Json instance;
+    private static Json instance;
+    //프로퍼티를 이용한 싱글턴 -> AddComponent해주지 않아도 사용이 가능함.
+    public static Json Instance 
+    { 
+        get 
+        {
+            if (instance == null) 
+                instance = new Json();
+           
+            return instance;
+        }
+    }
 
-    private void Awake()
+    //data파일을 불러오기 위함. 여러번 사용하기 때문에 LoadData에는 적합하지 않음
+    public PlayerData GetPlayerData()
     {
-        instance = this;
-
-        //유니티에서 알아서 만들어주는 경로 + /생성하는 파일 명
-        path = Application.persistentDataPath + "/" + filename;
-        Debug.Log(path);
+        return playerData;
     }
 
     //json 파일 저장하기
-    public void SaveData()
+    public void SaveData(PlayerData Data)
     {
+        playerData = Data;
         string data = JsonUtility.ToJson(playerData);
 
         //저장파일 생성. 외부에 저장.
         File.WriteAllText(path, data);
     }
 
-    //json 파일 불러오기.
+    //json 파일 불러오기. mainScene에서 한번만 사용
     public void LoadData()
     {
         string data = File.ReadAllText(path);
         playerData = JsonUtility.FromJson<PlayerData>(data);
     }
-
-    //저장된 값 가져오기
-    public int GetCharacter()
-    {
-        return playerData.characterIndex;
-    }
-
-    public string GetName()
-    {
-        return playerData.name;
-    }
-
-    public int GetLevel()
-    {
-        return playerData.level;
-    }
-
-    public int GetCoin()
-    {
-        return playerData.coin;
-    }
-
-    public int GetHealth()
-    {
-        return playerData.health;
-    }
-
-    public int GetExp()
-    {
-        return playerData.exp;
-    }
-    public float GetLevelExp()
-    {
-        return playerData.levelexp;
-    }
-
-    public float GetSpeed()
-    {
-        return playerData.speed;
-    }
-
-    public int GetAttack()
-    {
-        return playerData.attack;
-    }
-
-    public int GetDefense()
-    {
-        return playerData.defense;
-    }
-
-    public float GetCritical()
-    {
-        return playerData.critical;
-    }
-
 
     //바뀌는 데이터 값 save
     public void SetCharacter(int index)
