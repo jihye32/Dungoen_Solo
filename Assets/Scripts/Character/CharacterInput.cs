@@ -14,7 +14,7 @@ public class CharacterInput : MonoBehaviour
     //InputData
     protected void moveMent(Vector2 direction)
     {
-        direction = direction * Json.instance.GetSpeed();
+        direction = direction * GameManager.instance.playerData.speed; //던전에서는 움직이지 않도록 할 것이기 때문에 상관없음
         rigidBody.velocity = direction;
     }
 
