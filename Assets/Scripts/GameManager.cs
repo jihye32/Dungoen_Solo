@@ -3,14 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
+    PlayerData playerData;
     public GameObject[] characterPrefabs;
     public GameObject characterPosition;
     [HideInInspector] public GameObject character;
+
+    private Character characterStats;
     [HideInInspector] public int level;
     [HideInInspector] public int levelExp;
     [HideInInspector] public int health;
@@ -19,87 +23,66 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int defense;
     [HideInInspector] public float critical;
     [HideInInspector] public int coin;
-    private Character characterStats;
-    [HideInInspector] public CharacterLevel characterLevel;
-    [HideInInspector] public CharacterHealth characterHealth;
+    
 
-    [Header("Inventory")]
-    private Inventory inventory;
-    [HideInInspector] public GameObject[] inventorySlots;
-    public int inventorySlotCount;
-    [HideInInspector] public bool change_status;
-
-
+    [HideInInspector] public bool change_status = false;
     public Item testItem;
     public UIManager UiManager;
-    public Camera camera;
+    public Camera _camera;
 
 
     public static GameManager instance;
 
     private void Awake()
     {
-        instance = this;
+        //싱글턴
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(this);
 
-        Json.instance.LoadData();
+        //Json 불러오기
+        Json.Instance.LoadData();
+        playerData = Json.Instance.GetPlayerData();
 
-        camera = Camera.main;
-        inventory = GetComponent<Inventory>();
+        _camera = Camera.main;
 
-        character = Instantiate(characterPrefabs[0]);
+        //캐릭터 생성
+        character = Instantiate(characterPrefabs[playerData.characterIndex]);
+        character.transform.position = characterPosition.transform.position;
+
         characterStats = character.GetComponent<Character>();
-        characterLevel = character.GetComponent<CharacterLevel>();
-        characterHealth = GetComponent<CharacterHealth>();
     }
 
     private void Start()
     {
-        StartCharacterSetting();
+        //세팅 및 처음 스탯 저장
+        characterStats.StartCharacterSetting(playerData);
         SaveCharacterStats();
-
-        characterHealth.MakecharacterHealth(health);
-
-        inventorySlots = new GameObject[inventorySlotCount];
-        inventory.MakeInventorySlot(inventorySlotCount);
-        inventory.ItemInInventory(testItem);
     }
 
     private void Update()
     {
         if(change_status)
         {
-            UiManager.ChageCharacterUISetting();
+            //UiManager.ChageCharacterUISetting();
             change_status = false;
         }
-    }
-
-    private void StartCharacterSetting()
-    {
-        character.transform.position = characterPosition.transform.position;
-
-        level = characterStats.statusData.level;
-        health = characterStats.statusData.max_health;
-        coin = characterStats.statusData.coin;
-        speed= characterStats.statusData.speed;
-        attack = characterStats.statusData.attack;
-        defense = characterStats.statusData.defense;
-        critical = characterStats.statusData.critical;
-
-        change_status = false;
     }
 
     //CharacterStats 저장
     public void SaveCharacterStats()
     {
-        Json.instance.SetLevel(level);
-        Json.instance.SetCoin(coin);
-        Json.instance.SetHealth(health);
-        Json.instance.SetExp(levelExp);
-        Json.instance.SetLevelExp(characterLevel.levelUpExp[0]);
-        Json.instance.SetSpeed(speed);
-        Json.instance.SetAttack(attack);
-        Json.instance.SetDefense(defense);
-        Json.instance.SetCritical(critical);
-        Json.instance.SaveData();
+        playerData.level = level;
+        playerData.coin = coin;
+        playerData.health = health;
+        playerData.exp = levelExp;
+        playerData.levelexp = characterStats.level.levelUpExp[0];
+        playerData.speed = speed;
+        playerData.attack = attack;
+        playerData.defense = defense;
+        playerData.critical = critical;
+        Json.Instance.SaveData(playerData);
     }
 }

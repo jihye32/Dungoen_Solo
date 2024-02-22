@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    [HideInInspector] public GameObject[] inventorySlots;
+    public int inventorySlotCount;
+    
+
     public GameObject slotsParent;
     private GameObject slot;
     private Item[] inventoryItem;
@@ -17,6 +21,14 @@ public class Inventory : MonoBehaviour
         select_slot = -1;
         slot = Resources.Load<GameObject>("Prefabs/slot");
     }
+
+    private void Start()
+    {
+        inventorySlots = new GameObject[inventorySlotCount];
+        MakeInventorySlot(inventorySlotCount);
+        ItemInInventory(GameManager.instance.testItem);
+    }
+
 
     private void Update()
     {
@@ -34,14 +46,14 @@ public class Inventory : MonoBehaviour
         {
             GameObject newSlot = Instantiate(slot);
             newSlot.transform.parent = slotsParent.transform;
-            GameManager.instance.inventorySlots[i] = newSlot;
+            inventorySlots[i] = newSlot;
             inventoryItem[i] = null;
 
             //파라미터값 변경 -----------------------------------------------------------------------------------------------------------------------------
             //AddListener은 onClick에 함수를 넣어줌.
             //정수형 변수를 for문 안에 선언하여 실행될 함수의 파라미터에 넣어줌. i로 하거나 for문 밖으로 정수를 선언할 경우 차례대로 들어가지 않음. 
             int n = i;
-            GameManager.instance.inventorySlots[i].GetComponent<Button>().onClick.AddListener(() => OnSelectSlot(n));
+            inventorySlots[i].GetComponent<Button>().onClick.AddListener(() => OnSelectSlot(n));
         }
     }
     
@@ -52,9 +64,9 @@ public class Inventory : MonoBehaviour
             if (inventoryItem[i] == null)
             {
                 inventoryItem[i] = item;
-                GameManager.instance.inventorySlots[i].transform.Find("UnEquip/item").GetComponent<Image>().sprite = inventoryItem[i].itemData.itemImage;
-                GameManager.instance.inventorySlots[i].transform.Find("Equip/item").GetComponent<Image>().sprite = inventoryItem[i].itemData.itemImage;
-                GameManager.instance.inventorySlots[i].transform.Find("UnEquip/item").gameObject.SetActive(true);
+                inventorySlots[i].transform.Find("UnEquip/item").GetComponent<Image>().sprite = inventoryItem[i].itemData.itemImage;
+                inventorySlots[i].transform.Find("Equip/item").GetComponent<Image>().sprite = inventoryItem[i].itemData.itemImage;
+                inventorySlots[i].transform.Find("UnEquip/item").gameObject.SetActive(true);
                 break;
             }
         }
@@ -69,7 +81,7 @@ public class Inventory : MonoBehaviour
             GameManager.instance.defense += inventoryItem[index].itemData.defense;
             GameManager.instance.critical += inventoryItem[index].itemData.critical;
             GameManager.instance.health += inventoryItem[index].itemData.plus_health;
-            GameManager.instance.inventorySlots[index].transform.Find("Equip").gameObject.SetActive(true);
+            inventorySlots[index].transform.Find("Equip").gameObject.SetActive(true);
             GameManager.instance.change_status = true;
         }
         else if (inventoryItem[index] != null && inventoryItem[index].equip)
@@ -79,7 +91,7 @@ public class Inventory : MonoBehaviour
             GameManager.instance.defense -= inventoryItem[index].itemData.defense;
             GameManager.instance.critical -= inventoryItem[index].itemData.critical;
             GameManager.instance.health -= inventoryItem[index].itemData.plus_health;
-            GameManager.instance.inventorySlots[index].transform.Find("Equip").gameObject.SetActive(false);
+            inventorySlots[index].transform.Find("Equip").gameObject.SetActive(false);
             GameManager.instance.change_status = true;
         }
     }
