@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 3684637898762868050}
   - component: {fileID: 7766489702885983385}
   - component: {fileID: 919636330736403045}
-  - component: {fileID: 3357202566488870021}
   - component: {fileID: 6534402564275125224}
+  - component: {fileID: 3470715749097693893}
   m_Layer: 0
   m_Name: Character1
   m_TagString: Untagged
@@ -213,7 +213,22 @@ MonoBehaviour:
   - 0
   - 0
   levelup_plusExp: 0
---- !u!114 &3357202566488870021
+--- !u!114 &6534402564275125224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422057761505040365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faed4c29375cd00499e7397e032f29b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusData: {fileID: 11400000, guid: 937790d4bcc8682429949222794231f1, type: 2}
+  health: {fileID: 0}
+  level: {fileID: 0}
+--- !u!114 &3470715749097693893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,16 +258,3 @@ MonoBehaviour:
   m_DefaultActionMap: Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6534402564275125224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6422057761505040365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faed4c29375cd00499e7397e032f29b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusData: {fileID: 11400000, guid: 937790d4bcc8682429949222794231f1, type: 2}
